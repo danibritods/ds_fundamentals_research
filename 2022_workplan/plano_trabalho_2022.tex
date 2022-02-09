@@ -1,0 +1,243 @@
+\documentclass{article}
+\usepackage[brazil]{babel}
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{soul}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+
+\title{Plano de trabalho 2022}
+\author{Daniel Brito dos Santos}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\large
+\textbf{PROGRAMA INSTITUCIONAL DE BOLSAS DE INICIA\c{C}\~{A}O CIENTIF\'{I}CA E TECNOL\'{O}GICA\\\vspace{0,5cm}
+UNIVERSIDADE ESTADUAL DO NORTE FLUMINENSE DARCY RIBEIRO\\
+}
+\textit{Centro CCT \\
+Labotat\'{o}rio LCMAT\\
+\vspace{1cm}}
+%Plano de trabalho para o segundo ano da bolsa }\\
+\vspace{1,5cm}
+\textbf{Plano de Trabalho para Renovação de Bolsa de Iniciação Científica}\\\vspace{5cm}
+\end{center}
+\textbf{Bolsista}: Daniel Brito dos Santos\\
+\textbf{Matricula}: 00119110393\\
+\textbf{Orientadora}: Prof. Dra. Annabell Del Real Tamariz  \\
+\textbf{Curso}: Bacharelado em Ci\^{e}ncia da Computa\c{c}\~{a}o\\
+\vspace{3cm}
+\begin{center}
+\textbf{Titulo do Projeto}: Project-driven Data Science: Aprendendo e Mapeando\\
+\textbf{T\'{\i}tulo do Plano de Trabalho}: Aplicação Exploratória de \textit{Data Science} em um Projeto Real de Dados.\\
+\textbf{Fonte financiadora:} PIBIC/UENF
+\end{center}
+\end{titlepage}
+
+
+%\maketitle
+\section{Justificativa}
+Ciência de dados pode ser definida como o conjunto de técnicas, conceitos e ferramentas utilizados para extrair informação relevante de dados do mundo real. Logo percebemos o seu enorme potencial de solucionar problemas e inovar, fato comprovado pela crescente demanda por profissionais capazes de operacionalizar essa ciência nos mais diversos contextos \cite{DSmktshare}. Entretanto, pela sua própria natureza multidisciplinar, dinâmica e aplicada, a formação de um cientista de dados é um dos seus principais desafios.
+
+Dessa forma, o principal objetivo dessa pesquisa como um todo é cartografar o atual campo da ciência de dados, evidenciando os principais conceitos e ferramentas introdutórias.
+Neste segundo ano de trabalho, nosso objetivo é consolidar e aprofundar os aprendizados do ano anterior (2021). Assim, aliado aos fundamentos construídos anteriormente, identificamos importantes oportunidades de aprofundamento em diversas áreas e conceitos da ciência de dados. Desse modo, selecionamos os seguintes tópicos para desenvolvermos nesse próximo ano: Banco de Dados, Modelos Preditivos e Visualização de dados.
+
+Assim, no segundo ano na bolsa de Iniciação Científica (IC), propomos mapear e aplicar cada uma dessas áreas por meio de um projeto real de dados. Tal projeto deve ter parte interessada e dados a serem estruturados, armazenados e analisados. 
+Desse modo, teremos uma aprendizagem baseada na resolução de problemas, direcionada pelas necessidades do projeto, fundamentos construídos no ano anterior (2021) e material relevante de cada novo tópico estudado. 
+
+\section{Objetivos}
+\begin{enumerate}
+    \item Identificar um problema real e relevante no qual possamos definir e estruturar um Projeto de Dados para aborda-lo. De modo que possamos aplicar os conceitos estudados no primeiro ano da bolsa de IC, bem como direcionar os aprofundamentos deste segundo ano.
+    \item Executar de acordo com as diretrizes estudadas no ano anterior o projeto definido.
+    \item Estudar e aplicar no projeto os principais conceitos e ferramentas das seguintes áreas:
+    \begin{enumerate}
+        \item Banco de dados, no contexto da Obtenção de Dados especialmente na estruturação e consulta a bancos de dados com a linugagem SQL. 
+        \item Modelos Preditivos, como sub-área do Aprendizado de Máquina.
+        \item Visualização de Dados, como uma ciência própria da comunicação visual em todas as suas dimensões. 
+    \end{enumerate}
+\end{enumerate}
+
+\section{Metodologia}
+Seguindo a ideia de aprendizagem baseada em projeto \cite{krajcik2006project}, nesse segundo ano de bolsa de IC iremos buscar um projeto real, aliado aos materiais de referência relevantes para direcionar o estudo de cada tópico planejado. 
+Dessa forma, a cada etapa do trabalho estabeleceremos perguntas e buscaremos suas respostas em um processo cíclico inspirado nas metodologias ágeis \cite{beck2001manifesto} tendo em vista gerar valor à cada etapa. 
+
+\subsection{Bancos de Dados}
+No ano anterior, identificamos a importância da linguagem SQL no arsenal de um cientista de dados, bem como elencamos recursos para nos aprofundarmos na linguagem:
+\begin{itemize}
+    \item Os livros \cite{debarros2022practical,Silberschatz2019DBS} para referência da linguagem SQL e conceitos mais amplos de Bancos de Dados. 
+    \item Os sites \href{https://sqlbolt.com/}{SQLbolt}\footnote{sqlbolt.com/}, \href{https://www.hackerrank.com/domains/sql}{Hacker Rank}\footnote{www.hackerrank.com/domains/sql} e \href{https://pgexercises.com/}{PostgreSQL Exercises}\footnote{pgexercises.com} para prática deliberada de resolução de problemas com SQL.
+\end{itemize}
+
+Nesse ano, iremos utilizar tais recursos para estudar a linguagem SQL bem como buscaremos expandir a pesquisa para conceitos mais amplos, visando construir conhecimento sobre a criação e consulta de bancos de dados. 
+Nesse sentido, iremos utilizar os exercícios disponibilizado nos sites mencionados para direcionar o aprendizado SQL na prática. Também utilizaremos os livros \cite{debarros2022practical,Silberschatz2019DBS} para estudo e consulta dos conceitos de banco de dados ao mesmo tempo em que criaremos um sistema de banco de dados para armazenar e organizar os dados do Projeto escolhido. 
+\subsection{Modelos Preditivos}
+Conforme vimos anteriormente, modelos preditivos são o principal componente do Aprendizado de Máquina, através deles conseguimos construir programas capazes de encontrar padrões e relações entre variáveis e criar uma abstração matemática, esta que pode ser utilizada para compreender e principalmente predizer uma variável alvo a partir de inputs. Vimos também a complexidade dessa área mas que paradoxalmente podemos aplicar algum dos modelos mais conhecidos com grande facilidade por meio da biblioteca Scikit Learn em Python. Dessa forma, localizamos os cinco modelos mais representativos e os aplicamos no projeto Titanic desenvolvido no primeiro ano de bolsa de IC (2021). 
+Nesse ano, propomos nos aprofundarmos nos mecanismos e casos de uso de cada um desses modelos. 
+\begin{itemize}
+\item \textit{Logistic Regression}
+\item \textit{Deciosion Tree Classifier}
+\item \textit{Random Forest Classifier}
+\item \textit{KNN}
+\item \textit{Suppor Vector Classifier}
+\end{itemize}
+
+Para tanto estudaremos os livros \cite{vanderplas2016python,aurelien2017hands}, buscando documentar cada um dos modelos e suas aplicações. Além de aplicá-los na prática, conforme necessidade do projeto. 
+
+\subsection{Visualização de Dados}
+A visualização de dados diz respeito ao conjunto de conceitos e ferramentas utilizados na busca de uma comunicação visual efetiva. Nesse sentido utilizaremos o livro \cite{knaflic2015storytelling} como nossa maior referência. Também percorreremos as referências encontradas no artigo \cite{BATON} que mapeou a prática da ciência de dados buscando evidenciar o papel da visualização em cada processo. 
+Dessa forma, além de estruturar uma visão holística e fundamentada desse campo, executaremos o Projeto selecionado visando sempre aplicar o ferramental na prática, bem como identificar as necessidades de visualização do projeto para buscar respaldo na literatura.
+ 
+\section{Etapas}
+As etapas foram divididas de modo a realizarmos duas etapas simultaneamente a cada mês, cada objetivo foi dividido de modo a otimizar o tempo e as necessidades do projeto. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}l|l|l|l|l|l|l|l|l|l|l|l|l|@{}}
+\cmidrule(l){2-13}
+ &
+  \multicolumn{1}{c|}{\textbf{1º}} &
+  \multicolumn{1}{c|}{\textbf{2º}} &
+  \multicolumn{1}{c|}{\textbf{3º}} &
+  \multicolumn{1}{c|}{\textbf{4º}} &
+  \multicolumn{1}{c|}{\textbf{5º}} &
+  \multicolumn{1}{c|}{\textbf{6º}} &
+  \multicolumn{1}{c|}{\textbf{7º}} &
+  \multicolumn{1}{c|}{\textbf{8º}} &
+  \multicolumn{1}{c|}{\textbf{9º}} &
+  \multicolumn{1}{c|}{\textbf{10º}} &
+  \multicolumn{1}{c|}{\textbf{11º}} &
+  \multicolumn{1}{c|}{\textbf{12º}} \\ \midrule
+\multicolumn{1}{|l|}{\textbf{A - Definição do Projeto de Dados}} &
+  \cellcolor[HTML]{A4C2F4} &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+   &
+   &
+   &
+   &
+   &
+   &
+   &
+   \\ \midrule
+\multicolumn{1}{|l|}{\textbf{B - Execução do Projeto de Dados}} &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+  \cellcolor[HTML]{A4C2F4} &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   \\ \midrule
+\multicolumn{1}{|l|}{\textbf{C - Banco de Dados}} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+   &
+   \\ \midrule
+\multicolumn{1}{|l|}{\textbf{D - Modelos Preditivos}} &
+   &
+   &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   \\ \midrule
+\multicolumn{1}{|l|}{\textbf{E - Visualização de Dados}} &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   \\ \midrule
+\multicolumn{1}{|l|}{\textbf{F - Elaboração do Relatório Final}} &
+   &
+   &
+   &
+   &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} &
+   &
+  \cellcolor[HTML]{A4C2F4} \\ \bottomrule
+\end{tabular}%
+}
+\caption{Etapas do plano de trabalho}
+\label{tab:etapas}
+\end{table}
+
+
+\bibliographystyle{alpha}
+\bibliography{bibli}
+\end{document}
+
+\section{Extra}
+Nesse sentido, elencamos os seguintes objetivos específicos:
+\begin{enumerate}
+    \item Definir e estruturar um projeto real de dados 
+    \item Estudar o conjunto dos principais conceitos e ferramentas das áreas:
+    \begin{enumerate}
+        \item Banco de Dados, no contexto de obtenção de dados.
+        \item Visualização de Dados. 
+        \item Machine Learning, no contexto dos modelos preditivos.
+    \end{enumerate}
+    \item Consolidar os conceitos aprendidos ao aplicá-los no projeto:
+    \begin{enumerate}
+        \item Banco de Dados
+        \item Modelos Preditivos
+        \item Visualização de dados
+    \end{enumerate}
+ %   \item Compreender e estruturar o campo de Vizualização de Dados,
+\end{enumerate}
+
+
+O principal objetivo dessa pesquisa como um todo é cartografar o atual campo da ciência de dados. Nesse sentido, a partir dos fundamentos construídos anteriormente, identificamos uma importante oportunidade de aprofundamento nas áreas de Banco dos Dados, Modelos Preditivos e Visualização de Dados,
+
+Selecionamos nesse segundo ano, a partir dos fundamentos construídos anteriormente, as seguintes três áreas para mapearmos com mais detalhes e aplicarmos em um projeto representativo:
+\begin{enumerate}
+        \item Banco de Dados
+        \item Modelos Preditivos
+        \item Visualização de Dados 
+\end{enumerate}
+
+Nesse sentido, temos os seguintes objetivos específicos:
+

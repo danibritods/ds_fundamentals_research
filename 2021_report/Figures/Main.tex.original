@@ -1,0 +1,700 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[brazil]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{soul}
+
+\title{Rascunho Relatório Anual PIBIC 10}
+\author{Daniel Brito dos Santos}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract.
+
+\end{abstract}
+
+\section{Introdução}
+Em 1962, John Tukey publicou o artigo "The Future of Data Analysis" na revista científica The Annals of Mathematical Statistics \cite{FoDA}. Sendo o principal veículo para publicações de estatística matematicamente avançada, os outros artigos na revista apresentavam definições, teoremas e provas. Enquanto isso, o artigo de Tukey era basicamente uma confissão pública, explicando porquê ele achava esse tipo de pesquisa restritiva, possivelmente inútil e danosa. 
+Para ele, o escopo da pesquisa estatística deveria ser drasticamente ampliado e redirecionado. Nesse sentido, Tukey introduziu o termo "data analysis" para nomear o trabalho dos estatísticos práticos, diferenciando-o da inferência estatística formal. 
+Assim, seu argumento central é de que a estatística é parte de uma entidade maior, entidade esta que não seria apenas um braço da matemática, mas sim uma nova ciência. Uma ciência definida pelo problema onipresente que ela busca resolver ao invés de se definir pelo seu objeto concreto \cite{DONOHO}.
+
+Não é surpreendente que a resposta ao seu artigo tenha sido tímida, e hostíl. No próprio artigo, Tukey admite que extendeu o temo "data analysis" muito além de sua filologia, a tal ponto de na verdade englobar toda a estatística e ainda mais. Admite também que é um campo difícil, tanto a sua formalização quanto sua prática, e portanto deve se adaptar ao que as pessoas podem e precisam fazer com dados. Em suas palavras \cite{FoDA}:
+\begin{quote}
+Assim como biologia é mais complexa que física, ciência do comportamento é mais complexa que ambas, é provável que os problemas gerais de \textit{data analysis} sejam mais complexos que os problemas de cada uma dessas três disciplinas. 
+De modo que é pedir demais esperar uma orientação próxima e eficaz de uma estrutura altamente formalizada, agora ou em um futuro próximo. 
+\end{quote}
+
+Entretanto, o desafio que essa área apresenta é proporcional ao seu potencial disruptivo, como ficaria claro ao longo das décadas seguintes. \cite{DONOHO} argumenta que "em última instância, o que tornou essa atividade chamada 'data analysis' concreta foi código, e não palavras". De modo que a partir do compartilhamento dos scripts computacionais para análise de dados, principalmente potencializado pelo que o autor chama de \textit{Common Task Framework} (CTF), e todo o contexto de profusão de dados, crescimento do poder computacional e da mudança de paradigma que ela representou e que atualmente chamamos de ciência de dados se consolidou como um dos principais campos de pesquisa e trabalho da atualidade. 
+
+As CTFs foram as competições abertas nas quais grupos diferentes poderiam submeter seus scripts para resolver um desafio de dados, de modo a premiar e implementar as melhores soluções. Esse fenômeno foi resultado direto da observação de Tukey sobre a mudança de paradigma de otimizar o valor gerado no mundo real ao invés da elegância matemática. 
+
+Esse foco na geração de valor torna essa nova ciência extremamente relevante no contexto das necessidades empresariais e sociais que temos: aumentar eficiência, entregar produtos melhores, criar soluções relevantes, analisar impacto de políticas, organizar a torrente continua de informação coletada o tempo inteiro. 
+
+Logo, esse enfoque trouxe muitos resultados, como por exemplo o sucesso de algumas das empresas mais valiosas do mundo como a Amazon\footnote{www.amazon.com}, Google\footnote{google.com}, Facebok\footnote{facebook.com} e Netflix\footnote{netflix.com} \cite{DATAHUNGRY}. Nas quais o seu produto é fruto direto de seu processamento de dados. Tanto que nelas foi inaugurado o cargo "cientista de dados". Que logo foi denominada "a profissão mais sexy do século XXI" pela revista \href{https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century}{Harvard Bussiness Review}\footnote{hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century}.
+
+Nesse contexto se consolidou a Ciência de Dados (DS) que pode ser definida como o campo de conhecimento fundamentalmente interdisciplinar; responsável por aplicar, organizar e expandir o conjunto de ferramentas, técnicas e conceitos necessários no processo de transformação de dados brutos em informações relevantes. 
+
+Entretanto, considerando a amplitude de sua “caixa de ferramentas”, a necessidade de repertório para aplicá-las, a diversidade dos problemas abordados e a velocidade com que todo o campo se desenvolve, a formação de cientista de dados é um desafio inerente à própria natureza desse campo,\cite{BATON,DONOHO}.
+
+Assim, nosso projeto se insere como um primeiro passo na tentativa de mapear essa nova ciência. Elencar os seus principais conceitos e ferramentas. 
+Para tanto, revisamos a diversa literatura disponível tanto em livros quanto artigos e até mesmo sites interativos. Bem como executamos um projeto representativo para exemplificar e consolidar as principais técnicas e ferramentas utilizadas em cada etapa de um projeto de dados. 
+
+O projeto selecionado foi o Projeto Titanic, disponível na plataforma Kaggle\footnote{www.kaggle.com/c/titanic}.
+Essa plataforma é um dos principais recursos para a prática e aprendizado da ciência de dados. Pois nela encontramos fórums de discussão, minicursos, e principalmente competições de dados semelhantes aos CTFs mencionados por \cite{DONOHO}, onde é apresentado um problema e um conjunto de dados, de modo que cada usuário pode contruir e submeter a sua solução, que será automaticamente avaliada e rankeada junto às outras soluções submetidas. 
+
+O grande impacto que essa estrutura oferece é a possibilidade de competição colaborativa, pois ao mesmo tempo que cada um desenvolve a sua rotina de análise os notebooks podem ser publicados e discutidos, e dessa maneira muitos problemas inéditos foram resolvidos \cite{KAGGLE_OPPORTUNITY,KAGGLEgraham2015,KAGGLEiglovikov2017,KAGGLEnarayanan2011,KAGGLEpuurula2014,KAGGLEtaieb2014,KAGGLEyang2018}. 
+
+Tais soluções são construídas em notebooks, análogos aos Jupyter Notebooks, ou seja células interativas que podem conter código ou texto e que, segundo \cite{BATON}, se tornaram o principal ambiente de desenvolvimento dos cientistas de dados. Os notebooks do Kaggle ainda oferecem processamento e armazenamento online gratuitos.
+
+Finalmente, selecionamos o Titanic por ser a competição sugerida como introdução tanto à plataforma, quanto a projetos de dados. 
+
+\section{Etapas propostas no plano de trabalho}
+O plano de trabalho original consistiu em desenvolver o Projeto Titanic de acordo com as etapas canônicas de um projeto de dados. Desse modo, em cada passo executamos o projeto, e utilizamos seu contexto para o estudo direcionado dos conceitos e ferramentas necessárias àquela etapa. Foram elas:
+\begin{enumerate}
+\item Bases gerais
+\item Definição de problema
+\item Obtenção de dados
+\item Data Analysis
+\item Machine Learning
+\item Data Vizualization
+\item Deployment 
+\item Elaboração do relatório final.
+\end{enumerate}
+
+Não foi possível executar a etapa 7 conforme havíamos proposto em função do desenvolvimento da pesquisa ter se mostrado particularmente frutífera nas primeiras quatro etapas. Desse modo, o tempo dedicado as etapas 1-5 trouxe uma fundamentação teórica sólida, que inclusive está sendo consolidada na forma de um artigo científico. 
+A etapa 6 foi parcialmente cumprida conforme o planejado uma vez que foi estudada e aplicada ao longo de todo o projeto, mas devido ao mesmo motivo de priorização, também não foi possível nos aprofundarmos nessa área conforme o esperado. 
+
+\section{Objetivos}
+Nosso objetivo nesse primeiro ano foi mapear e delinear os contornos da atual pesquisa e prática da Ciência de Dados. Explicitar a sua definição, seus principais métodos, conceitos e ferramentas. Bem como consolidar e exemplificar o aprendizado por meio da execução de um projeto representativo. 
+
+\section{Metodologia}
+Utilizamos uma metodologia diversificada para abordar os diferentes aspectos do projeto. De modo que o separamos em subprojetos de acordo com as etapas canônicas de um projeto de dados, principalmente inspiradas nos cinco passos definidos por \cite{PRINCIPLES}: 
+
+\begin{itemize}
+\item Construir uma pergunta interessante
+\item Obter os dados
+\item Explorar os dados
+\item Modelar os dados
+\item Comunicar e visualizar os resultados
+\end{itemize}
+
+Assim, a cada etapa, buscamos o ferramental necessário e executamos os passos correspondentes no projeto Titanic. 
+
+Além dessa pesquisa teórica, o bolsista também se familiarizou com a plataforma Kaggle. Especialmente no que diz respeito ao projeto Titanic por meio do estudo da \href{https://www.kaggle.com/c/titanic}{página do projeto}, tendo em vista compreende-lo para aplicar o que foi estudado teoricamente sobre a estruturação e execução de um projeto de dados.
+
+
+\subsection{Bases Gerais}
+O primeiro dos subprojetos foi o estudo da área em si. Iniciamos o processo de familiarização a partir da leitura dos livros \cite{PRINCIPLES} e \cite{DOING}. 
+Posteriormente, percebemos que há um importante debate quanto a definição de ciência de dados como um campo. Portanto, entendemos necessário buscar referencial teórico na literatura para definirmos Ciência de Dados, de modo a delimitarmos o escopo de sua prática e teoria, modelo de trabalho e pressupostos.
+
+Nesse sentido pesquisamos o termo "\textit{Data Science}" na plataforma de busca "Google Scholar"\footnote{scholar.google.com}, filtramos apenas os artigos do tipo revisão. Percorremos as primeiras 100 páginas de resultados avaliando manualmente seus títulos e resumos (\textit{abstracts}). Assim, selecionamos os artigos que têm por objeto a caracterização rigorosa da Ciência de Dados, seu campo, teoria e prática. Uma vez selecionados, os artigos foram lidos sistematicamente de modo a construir a partir dos mesmos um panorama dessa área. 
+
+A sistematização desse processo de pesquisa foi direcionada pelo Professor Dr. Humberto Fernandes, no contexto do workshop "English for Scientific Writing" oferecido pela assessoria de assuntos internacionais da UENF. O bolsista continua trabalhando nessa pesquisa que será/poderia ser consolidada em um artigo a ser publicado em revista em língua inglesa. 
+
+\subsection{Definição de problemas de dados}
+Nessa etapa voltamos aos livros \cite{DATAPYTHON}, \cite{PRINCIPLES} e principalmente ao modelo de trabalho definido por \cite{BATON}, encontrado como resultado da pesquisa na etapa anterior. De modo a identificar e compreender de forma mais ampla as ferramentas e preocupações que cientistas de dados devem ter ao iniciar um projeto. 
+
+Além dessa pesquisa teórica, o bolsista também se familiarizou com a plataforma Kaggle. Especialmente no que diz respeito ao projeto Titanic por meio do estudo da \href{https://www.kaggle.com/c/titanic}{página do projeto}, tendo em vista compreende-lo para aplicar o que foi estudado teoricamente sobre a estruturação e execução de um projeto de dados. 
+
+\subsection{Obtenção de Dados}
+Iniciamos essa etapa estudando a obtenção de dados, usando o livro \cite{DATAPYTHON}, e seguindo as diretrizes do modelo \cite{BATON}.  Nesse contexto, também buscamos elencar os principais recursos para aprendizagem da linguagem SQL\cite{chamberlin1974sequel}. Isto porque bancos de dados relacionais são uma das mais importantes fontes de dados para um cientista de dados, portanto dominar a sua língua franca é essencial para um profissional dos dados \cite{SCRATCH,DATAPYTHON}.  Não utilizamos SQL no Titanic devido ao fato de ser um projeto introdutório no qual os dados já foram fornecidos no formato de uma tabela simples e organizada, portanto não foi necessário utilizarmos bancos de dados. 
+
+Nesse sentido, para obtermos os dados para o projeto Titanic utilizamos as instruções do Kaggle bem como a documentação oficial da biblioteca Pandas\footnote{pandas.pydata.org}. Essa é a principal ferramenta para obtenção e análise de dados em Python. Ela oferece estrutura de dados especiais para trabalhar com conjunto de dados, sendo o DataFrame a sua principal abstração. Com ela podemos repartir, agrupar, ler diversos tipos de arquivo, criar visualizações rápidas, aplicar funções a colunas, dentre várias outras funcionalidades.
+Na sequencia apresentam-se os passos seguidos:
+\begin{enumerate}
+    \item Criar um novo notebook para o projeto, em sua página principal selecionamos a aba \textsc{code} e clicamos no botão \textsc{new notebook}, vide Figura \ref{create_notebook}.
+    \begin{figure}[H]
+     \centering
+     \includegraphics[width=\textwidth]{Figures/create_notebook.png}
+     \caption{\label{create_notebook}Criação de um novo notebook.}
+    \end{figure}
+    
+    \item Como se mostra na Figura \ref{new_notebook}, nosso novo notebook já têm o código para a lista dos arquivos correspondentes, bem como o carregamento das bibliotecas necessárias nessa etapa do projeto.
+    \begin{figure}[H]
+     \centering
+     \includegraphics[width=\textwidth]{Figures/kaggle_new_notebook.png}
+     \caption{\label{new_notebook}Notebook criado.}
+    \end{figure}
+    
+    \item Assim, utilizamos a função \textsc{read\_csv()} da biblioteca Pandas (importada com o "apelido" de "pd", vide Figura \ref{new_notebook}), com o endereço do arquivo desejado, para carregarmos a tabela de treinamento e de teste respectivamente na memória, conforme vemos na Figura \ref{read_csv} os comandos executados para esse fim. 
+    \begin{figure}[H]
+     \centering
+     \includegraphics[width=\textwidth]{Figures/read_csv.png}
+     \caption{\label{read_csv}Carregamento das tabelas.}
+    \end{figure}
+\end{enumerate}
+
+\subsection{Data Analysis}
+Nessa etapa, iniciamos construindo um repertório de técnicas e conceitos a partir das ideias de \cite{DATAPYTHON}, \cite{BATON}, e simultaneamente exploramos os dados desenvolvendo a análise do projeto Titanic. Assim como utilizamos o ecossistema construído, aliado aos referenciais teóricos para ganhar fluência no ecossistema da linguagem Python para análise de dados. Isto é, utilizando a biblioteca Pandas para ler arquivos CSV, processar tabelas e transformar dados. 
+
+\subsubsection{Técnicas e conceitos}
+\begin{itemize}
+\item Utilizamos a função \textsc{df.info()} da biblioteca Pandas para nos apresentar um resumo da tabela: lista de suas colunas, quantidades de linha, número de entradas em cada linha. 
+\item Utilizamos a função \textsc{train.describe()} para observarmos o resumo estatístico dos dados, apresentando dados como média, desvio padrão, quartis. 
+\item Utilizamos a função \textsc{.map()} para mapear cada entrada da coluna a um dicionário. Desse modo, a função percorre cada entrada de uma determinada coluna e caso seu valor esteja presente como chave do dicionário, a função o substitui pelo valor do dicionário. Assim podemos por exemplo ter uma coluna "Sex" com valores 'male' e 'female' e um dicionário {'male':0,'female':1}, ao aplicar o dicionário na coluna, as strings serâo substituidas pelos inteiros correspondentes. Assim podemos fazer análises numéricas dessa coluna também. 
+\item Utilizamos a função \textsc{groupby()} para relacionar duas colunas e observar seu comportamento de acordo com a outra. Por exemplo, podemos observar a média da idade dos sobreviventes, e comparar com a média de idade dos que não sobreviveram. Nesse caso agrupamos todas as variáveis numéricas de acordo com a sobrevivência, de modo que temos a média de cada coluna em cada destino.
+\item \textsc{.hist()} nos apresenta o histograma da coluna selecionada. Como parâmetros opcionais utilizamos o \textsc{bins=} para determinar quantas barras serão utilizadas, \textsc{sharex=True} para ambos os histogramas compartilharem o eixo x, \textsc{sharey=False} para que a escala de y possa ser de acordo com cada histograma, assim podemos ver a diferença percentual e não apenas absoluta.
+\end{itemize}
+
+Já na função final de preprocessamento temos as seguintes técnicas:
+\begin{itemize}
+\item Utilizamos a função \textsc{.drop()} para remover as colunas que não utilizaremos como entrada. Com os parâmetros \textsc{axis=1} para selecionar colunas e \textsc{inplace=True} para que modifique o próprio \emph{dataset} ao invés de retornar uma cópia.
+\item Criamos a função \textsc{label\_enconder\_converter()} para transformar as variáveis textuais em numéricas. 
+\item Criamos a função \textsc{Transform\_column()} para ser aplicada no \emph{dataframe} de modo que preencha a coluna \textsc{Age} de acordo com a mediana da classe e sexo de cada pessoa com esse campo vazio. 
+\end{itemize}
+\textbf{Vc não acha que devia inserir um pedaço, pelo menos, da tal tabela: train ou test, para entender esses campos que vc menciona no seu texto?}
+
+Tais técnicas foram utilizadas na construção da função Wrangle() apresentada na listagem \ref{wrangle}. Utilizada para efetuar o preprocessamento nos dados obtidos a partir do que foi estudado na etapa de Profiling. Desse modo, sempre que tivermos dados análogos aos dados de teste eles serão inicialmente transformados por meio dessa função antes de serem processados pelo modelo que será desenvolvido na etapa de Machine Learning. 
+
+\begin{listing}
+\begin{minted}{Python}
+def Wrangle(df):  
+    '''Recebe e transforma o dataframe'''
+    dropped_columns = ['PassengerId', 'Name', 'Ticket', 'Cabin','Sex_encoded']
+    df.drop(dropped_columns,axis=1, inplace=True)
+
+def label_encoder_converter(df):
+    '''Codifica em números as variáveis categóricas'''
+    df["Embarked"] = df["Embarked"].map({"C":3,"Q":2,"S":1,np.nan:0}).astype(int)
+    df["Sex"] = df["Sex"].map({"male":0,"female":1}).astype(int)
+        
+def Transform_column(column,age_table):
+    ''' Preenche os dados faltantes da coluna Age a partir da classe e sexo de cada passageiro'''
+    Age = column[0]
+    Sex = column[1]
+    Pclass = column[2]
+
+    if(pd.isna(Age)):
+        return age_table.loc[Sex,Pclass]
+    else:
+        return Age
+
+age_table = df.pivot_table(index='Sex', columns='Pclass', values='Age',aggfunc="median")  
+df['Age'] = df[['Age','Sex', 'Pclass']].apply(Transform_column, axis = 1, age_table=age_table)
+df["Family"] = df["SibSp"] + df["Parch"]
+label_encoder_converter(df)
+\end{minted}
+\caption{Função Wrangle()}
+\label{wrangle}
+\end{listing}
+
+\subsection{Aprendizado de Máquina ou \emph{Machine Learning}}
+Seguindo e estudando as diretrizes do modelo apresentado em \cite{BATON}, dos minicursos disponíveis no Kaggle, da documentação oficial da biblioteca \emph{Scikit Learn}, assim como os livros \cite{SCRATCH} e \cite{PRINCIPLES}; buscou-se então definir um referencial teórico dos principais conceitos dessa etapa/da etapa de aprendizado de máquina. 
+
+Os conceitos foram aplicados no Titanic da seguinte forma:
+\begin{itemize}
+\item Importamos os módulos relevantes da biblioteca \emph{Scikit Learn}: 
+\begin{enumerate}
+\begin{minted}{Python}
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+\end{minted}
+
+\item Função "\textsc{train\_test\_split()}" para separar aleatoriamente os nossos dados de teste de modo que possamos utilizar parte para treinar o modelo e outra parte para validar e avalia-lo. 
+\item os modelos selecionados após estudo da teoria.
+
+\textbf{Do mesmo jeito que explicou a funcionalidade do primeiro modulo, deveria explicar os outros também.}
+\end{enumerate}
+\item Separamos as Features da variável \textsc{target}:
+\begin{minted}{Python}
+X = df.drop(['Survived'],axis=1)
+y = df['Survived']
+\end{minted}
+\item Construímos um dicionário para armazenar os modelos:
+\begin{minted}{Python}
+models = {'Logistic Regression': LogisticRegression(),          
+          'Decision Tree Classifier': DecisionTreeClassifier(), 
+          'Random Forest Classifier': RandomForestClassifier(random_state = 0),
+          'KNN': KNeighborsClassifier(),
+          'Support Vector Classifier': SVC()}
+\end{minted}
+\item Criamos um função XXX para automaticamente treinar e avaliar cada modelo, vide listagem \ref{list2}.
+\begin{listing}[!ht]
+\begin{minted}{Python}
+def Evaluate_models(models,X,y):
+    acc = {} 
+    #cria dicionario vazio, acc como sigla para accuracy.
+    X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size = 0.2, random_state = 0)
+    #separa e armazena em y 20 por cento das linhas do df para validarmos o modelo
+    
+    for name,model in models.items():
+        #para cada item do dicionario de modelos: 
+        model.fit(X_train, y_train)
+        #treina o modelo 
+        y_pred = model.predict(X_valid)
+        #utiliza o modelo treinado para predizer o y que conhecemos 
+        acc[name] = model.score(X_valid, y_valid)
+        #armazena no dicionario de resultados a pontuação do modelo
+    
+    results =  pd.DataFrame.from_dict(acc,orient='index',columns=["Score"])
+    #transforma o dicionario de resultados em uma tabela pandas
+    return results
+\end{minted}
+\caption{Definição da Função evaluate_models}
+\label{list2}
+\end{listing}
+
+\item Após a primeira avaliação, experimentamos aplicar a técnica normalização e comparar os resultados. Nesse sentido:
+\begin{enumerate}
+    \item Importamos a função escaladora normal da biblioteca \emph{Scikit Learn} usando a seguinte linha de comando:
+    \begin{minted}{Python}
+    from sklearn.preprocessing import StandardScaler
+    \end{minted}
+    \item Copiamos o \textsc{df}, modificamos suas duas colunas \textsc{Age} e \textsc{Fare} para suas versões normalizadas. 
+    \begin{minted}{Python}
+    df_2 = df.copy()
+    df_2[["Age","Fare"]] = StandardScaler().fit_transform(df[["Age","Fare"]])
+    \end{minted}
+\end{enumerate}
+\end{itemize}
+
+\textbf{Acredito que está faltando algum parágrafo para terminar a ideia da seção, ou seja, para que vc precisou fazer todos esses comandos? Entendeu???}
+
+\subsection{Data Visualization}
+Infelizmente nesse primeiro ano utilizamos apenas os recursos mais simples das bibliotecas e conceitos de visualização, de modo que bastou a documentação oficial da biblioteca Pandas para utilizarmos a função de histograma (hist()) conforme explicado na sessão Data Analysis. 
+
+Também estudamos o artigo \cite{BATON}, escrito por pesquisadoras da Tableu, principal empresa de software para visualização interativa de dados e Business Inteligence (BI). Esse termo se refere a ciência de dados aplicada especificamente na construção de soluções baseada em dados para empresas.  \cite{negash2008business}
+
+\subsection{Deployment}
+Conforme mencionamos na sessão de etapas, não conseguimos completar essa tarefa dentro do tempo proposto, esperamos concluí-la no próximo ano de trabalho. 
+\newline
+\textbf{Aqui, vc poderia explicar o que significa essa fase no seu projeto e com certeza a execução dela, poderá ser apresentada no próximo relatório}
+
+\section{Resultados}
+
+Nesta seção apresentamos os primeiros resultados obtidos nesta pesquisa. Deixamos esclarecido que usaremos, ao longo do texto, o termo \textit{Machine Learning} para referirmos ao \textbf{Aprendizado de Máquina}.
+
+\subsection{Bases Gerais}
+Nesse primeiro subprojeto buscamos estruturar uma definição para a ciência de dados a partir dos artigos estudados. 
+
+\subsubsection{O que é Ciência de Dados?}
+\cite{BATON} define a ciência de dados como o campo multidisciplinar que busca novas ideias a partir de dados do mundo real através da aplicação estruturada de técnicas primariamente estatísticas e computacionais. 
+O artigo também afirma que na literatura ainda há considerável debate quanto aos contornos desse campo, porém, os especialistas tendem a concordar que a necessidade de integrar diversas disciplinas, aliada aos desafios de criar uma infraestrutura analítica robusta, introduziram um conjunto único de desafios que são melhor enfrentados por profissionais chamados "cientistas de dados". Ao que \cite{DONOHO} acrescenta:
+\begin{quote}
+"Ciência de Dados" é o melhor campo para acomodar pesquisa de grande impacto que seria difícil de classificar de outro modo, como por exemplo Tukey 1977 EDA e o trabalho de Wickham em Tidy Data e Grammar of Graphics.
+\end{quote}
+
+Essa nova ciência, conclamada em 1962 por John Tukey, foi recebida com timidez e controvérsia entre os estatísticos. Mas, meio século depois, com a popularização de ambientes de programação quantitativos como o R,  ela se tornou auto-evidente. Isto porque o que antes era uma descrição em prosa de uma análise, agora poderia ser precisamente descrito em um \textsc{script} com alto nível de abstração. Esses chamados \textit{workflows} podem ser compartilhados, reexecutados com outros dados, facilmente modificados e quantificados. Logo, se tornaram evidentes objetos de pesquisa, \cite{DONOHO}.
+
+Ambos os artigos observaram na literatura a precisão da profecia de Tukey, especialmente em sua afirmativa sobre a Ciência de Dados ser uma disciplina orientada pela prática. Ou seja, seu sucesso deriva do valor gerado ao resolver problemas do mundo real. 
+A mudança de paradigma para maximizar a utilidade de sua prática, efetividade em gerar valor.\textbf{[Explicar melhor qual a mudança de paradigma]}
+
+\subsubsection{Processos que constituem a Ciência de dados}
+Outra dimensão ressaltada por Tukey e observada por \cite{DONOHO} especialmente nas ideias de John Chambers and Bill Cleveland é a ciência que se forma no entorno do "aprender com dados do mundo real" e tudo que esse processo engloba. Especialmente a possibilidade da Ciência de Dados construir e oferecer ferramental que possibilite o avanço de todas as outras ciências, ao aprimorar todo o processo de transformar dados em informação, desde ferramentas de processamento computacional, até bases epistemológicas desse processo. 
+
+\cite{DONOHO} chama essa disciplina expandida de \textit{Greater Data Science}, e a divide em seis sub-áreas:
+\begin{enumerate}
+\item Data Gathering, Preparation, and Exploration
+\item Data Representation and Transformation
+\item Computing with Data
+\item Data Modeling 
+\item Data Visualization and Presentation
+\item Science about Data Science
+
+\end{enumerate}
+Ja \cite{BATON} traz uma abordagem observacional, processando o que já está registrado na literatura com pesquisas de mercado. O artigo sintetiza um modelo de trabalho constituído de quatro processos de alta ordem, divididos em 14 subprocessos da seguinte forma:
+\begin{itemize}
+\item \textbf{Preparation}: Defining Needs, Data Gathering, Data Creation, Profiling, and Data Wrangling
+\item \textbf{Analysis}: Experimentation, Exploration, Modeling, Verification, and Interpretation.
+\item \textbf{Deployment}: Monitoring and Refinement
+\item \textbf{Communication}: Dissemination and Documentation
+\end{itemize}
+
+O artigo também identifica mais dois processos de alta ordem emergindo:
+\begin{itemize}
+\item \textbf{Pedagogia} 
+\item \textbf{Colaboração}
+\end{itemize}
+
+Podemos observar que ambas as definições são compatíveis e adequadas à sua proposta: a GDS como orientação teórica de pesquisa e organização da literatura, enquanto o Data Work Model oferece uma excelente estrutura para abordar um projeto de dados. 
+
+\subsubsection{Consolidação dessa pesquisa em um artigo científico}
+Os resultados desse subprojeto estão sendo compilados e desenvolvidos em um artigo científico que o bolsista esta desenvolvendo em parceria com o professor Dr. Humberto Fernandes, desenvolvido no contexto do workshop "Scientific Writing" oferecido pela ASSAI-UENF.
+
+\subsection{Definição de problemas de dados}
+\subsubsection{Principais conceitos}
+ O livro \cite{DATAPYTHON} ressalta a importância fundamental de se entender o "problema do negócio" e circunscreve-lo em uma definição matemática. O que muitas vezes significa ter um papel fundamental na definição do "que será feito e como será feito". Portanto, a ciência de dados requer um diálogo imprescindível entre o cientista e pessoas especializadas na área do "negócio".
+ 
+Nesse sentido, segundo o modelo \cite{BATON}, a definição do problema de dados é o processo de traduzir objetivos analíticos, geralmente definidos por um \textit{Stakeholder}, em um conjunto de requerimentos viáveis. Dentre tais requerimentos estão:
+\begin{itemize}
+\item Dados necessários
+\item Planos para analisá-los
+\item Definir quais serão as entregas, como por exemplo: relatórios, modelos e infraestrutura computacional. 
+\end{itemize}
+
+\subsubsection{Titanic}
+
+No projeto Titanic, e nas competições Kaggle em geral, já temos o "problema de negócio" definido. Nesse caso, nosso objetivo é determinar a partir dos seus dados, quais passageiros sobreviveriam ao trágico acidente, tendo em vista, especialmente um olhar crítico para os resultados, analisando quais foram as características dos passageiros que aumentaram suas chances de sobrevivência.
+
+A partir desse problema devemos pensar em quais dados precisamos obter para aborda-lo. Nesse caso, precisamos de uma amostra com os dados de diversos passageiros e o seu destino. Podemos utilizar tal amostra para treinar um modelo preditivo que possa receber outro conjunto análogo apenas com as informações e predizer o destino de cada um. Dessa forma, no processo de construção desse modelo esperamos compreender quais foram os fatores que mais contribuíram para o desfecho de cada pessoa à bordo. 
+
+Já temos nessa etapa, conceitos iniciais de \textit{Machine Learning}. Isto porque temos uma variável a ser predita, também chamada de variável alvo (\textbf{target}), variável resposta ou \textbf{y}. 
+Para predize-la, temos um conjunto de \textbf{features}, isto é, as características de cada passageiro em nosso conjunto de dados, também chamado de \textit{dataset}. A partir das features, geramos um conjunto de variáveis \textbf{X} para prever nossa variável \textbf{y}. 
+Dessa forma, precisamos de um \emph{dataset} com \emph{features} e variável alvo. 
+Estes dados de treino são inseridos em um modelo que tentará modelar matematicamente as relações de X para y, de modo que posteriormente para qualquer outro conjunto análogo a X, o modelo possa prever um valor de y. 
+
+Assim, sabemos que devemos construir um modelo preditivo de classificação, que para cada conjunto de dados $X_i$ de um passageiro \emph{i}, ele possa gerar um $y_i$ de valor zero ou um, representando a sua sobrevivência. Também sabemos que se faz necessário, portanto, obtermos um \emph{dataset} com X e y para treinarmos nosso modelo. O que também já nos aponta para o uso da biblioteca Pandas para estruturar esse X além do uso da biblioteca \emph{Scikit Learn} para criar, treinar e utilizar um modelo de \textit{Machine Learning} ou \textbf{Aprendizado de Máquina} em português.
+\newline
+---
+[Nesse capítulo eu depois vou pedir a dóris pra me ajudar a encontrar o que precisa ser melhor explicado e onde colocar as explicações. Talvez explicar sobre modelos preditivos e de classificação. Será que isso cabe nas bases gerais? Acho que sim, a ver.]==> essa explicação iria na seção anterior, onde vc apresenta toda essa parte teórica ou fundamentação. Aqui são os resultados dos testes realizados.
+
+\subsection{Obtenção de Dados}
+\subsubsection{Conceitos principais}
+Uma vez definidos os requerimentos, o passo seguinte de acordo com o modelo \cite{BATON}, é a obtenção de dados. Para tanto, o modelo ressalta três possibilidades:
+\begin{itemize}
+\item Identificar o conjunto de dados adequado dentre vários candidatos. 
+\item Gerar novos dados a partir da integração e transformação de dois ou mais conjuntos existentes. 
+\item Desenvolver critérios e mecanismos para coletar dados que ainda não existem. 
+\end{itemize}
+ 
+Tanto a primeira, quanto a segunda situação se referem aos casos nos quais o "cliente" do serviço de dados já dispõem de um banco de dados estruturado. Nesse caso, normalmente, a obtenção envolve escrever uma \emph{query} na linguagem SQL.  
+ Do contrário, quando o cliente dispõem dos dados porém em formato inadequado,  é necessário primeiramente adequá-los ao primeiro caso, o que normalmente também envolverá a linguagem SQL, provavelmente \emph{scritps} e possivelmente certa organização manual de dados.  
+
+ No terceiro caso, há uma variedade maior de possibilidades, desde a realização de pesquisa como questionários, até a criação de \emph{scritps} para capturar da internet as informações relevantes, processo que chamamos de \emph{Webscrapping}. Esperamos nos aprofundar nesse tópico no próximo ano de pesquisa. 
+  
+O livro \cite{DATAPYTHON} também ressalta a importância da documentação do conjunto de dados obtidos. Nela devem estar as principais informações sobre o \emph{dataset}, tais como a explicação de suas colunas e seus conteúdos, definições de termos, seu contexto, dentre outras. ==> \textbf{ntão, senti falta no seu relatório dos dados utilizados na sua pesquisa, vc não apresentou as colunas/dados dessas tabelas trains e test que criou ou mencionou no inicio do relatório.} 
+
+ \subsubsection{SQL}
+Considerando a importância unânime de dominar a linguagem SQL para consulta e em banco de dados [Citar os artigo], [improve]
+elencamos aqui os principais recursos que encontramos para a sua aprendizagem. Acreditamos que a forma mais eficiente de se aprender uma habilidade prática é por meio da prática direcionada, nesse sentido, os seguintes três sites se mostraram os mais interessantes; 
+\begin{itemize}
+\item \href{https://sqlbolt.com/}{SQLbolt}
+\item \href{https://www.hackerrank.com/domains/sql}{Hacker Rank}
+\item \href{https://pgexercises.com/}{PostgreSQL Exercises}
+\end{itemize}
+ 
+\textbf{acredito que daria para trazer algo mas conciso e claro sobre o que vai usar de SQL, para que fique bem explicito}
+ \subsubsection{Titanic}
+À partir da definição do problema, buscamos obter os dados disponíveis ou criá-los. No caso de nosso projeto Titanic, como em todas as competições Kaggle, os dados são disponibilizados pela plataforma e podem ser obtidos conforme descrito na metodologia. Temos, portanto os arquivos train.csv, test.csv, e gender\_submission.csv respectivamente apresentados nas figuras \ref{df.csv} \ref{test.csv} e \ref{gender\_submission.csv}. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/df.png}
+\caption{\label{df.csv}DataFrame principal lido do arquivo train.csv}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/test.png}
+\caption{\label{test.csv}teste.csv lido pela biblioteca Pandas}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/gender_submission.png}
+\caption{\label{gender\_submission.csv}gender\_submission.csv}
+\end{figure}
+
+\begin{itemize}
+\item train.csv:  uma tabela com 891 linhas e 12 colunas, respectivamente representando cada passageiro, e suas features, inclusive se ele sobreviveu. Exatamente o dataset descrito em nosso requerimento, portanto o atribuímos a variável "df", sigla para "dataframe".  
+\item test.csv: muito semelhante ao arquivo anterior, contem outros 418 passageiros, mas dessa vez apenas 11 colunas. Isto porque a coluna "survived" está ausente, exatamente a coluna que nosso modelo se propõe a preencher. Este conjunto é o conjnuto de dados que a resposta será utilizada na avaliação automática que o kaggle faz em nosso modelo. 
+\item gender\_submission.csv: é um exemplo de submissão a competição kaggle, ela contém as mesmas 418 linhas e a mesma coluna "PassengerId" que a test.csv, acrescida da coluna "Survived", nesse caso, preenchida a título de exemplo de modo que todas as passageiras sobreviveram e todos os passageiros morreram. Esse é um exemplo do arquivo que será submetido a competição e utilizado para avaliar nossa solução para o problema. 
+\end{itemize}
+
+\subsection{Data Analysis}
+\subsubsection{Conceitos principais}
+\cite{BATON} aponta que esse processo, denominado de Data Analysis pelo livro \cite{DATAPYTHON}, também pode ser encontrado com outros nomes na literatura como "pré-processamento", "tidying", "limpeza", "wrangling", "Exploratory Data Analysis (EDA)" ou ainda "Data Understanding". 
+Nesse sentido, as autoras defendem dividi-lo entre "Profiling" e "Data Wrangling" e agrupa-los junto aos passos anteriores, de modo a constituir o macro processo de "Preparation". 
+
+Assim, de acordo com o modelo apresentado, temos as seguintes definições:
+\begin{itemize}
+\item \textbf{Profiling}: é o processo de avaliar atributos dos dados para entender a distribuição de seus valores, identificar valores faltantes e examinar a sua associação à outros atributos. Bem como compreender os dados e seu conteúdo. 
+\item \textbf{Data Wrangling}: processo de utilizar o que foi aprendido no Profiling para conformar e transformar os dados de modo a adequá-los para os próximos passos. 
+\end{itemize}
+
+Nesse sentido, dentro do ecossistema Python, a biblioteca Pandas é a ferramenta absoluta para manipulação de tabelas, aliada a NumPy, que traz um robusto repertório de implementações matemáticas e aplicações de álgebra linear. [Aqui eu posso citar todos os livros, porque todos eles mencionam essas ferramentas]
+
+\subsubsection{Técnicas}
+Essa etapa é sabidamente a mais dispendiosa de uma pipeline de dados\cite{BATON}.  Devido principalmente ao tempo necessário e dificuldade de automatizar. Dessa forma, é também uma das etapas mais difíceis de se ensinar, \cite{DONOHO} justamente em função da intervenção humana e seu processo quase artesanal para compreender adequar os dados. 
+
+Dessa forma, segundo \cite{DATAPYTHON}, devemos analisar os dados tanto diretamente quanto por meio de sumários gráficos e numéricos, mas principalmente analisar criticamente se nossos achados fazem sentido, e se estão de acordo com a documentação do dataset. Nesse sentido compilamos a seguinte lista de perguntas para nortear o processo de Profiling:
+\begin{enumerate}
+\item Quantas colunas? (podem ser features, variável resposta, ou metadados)
+\item Quantas linhas? (checar se cada linha é uma amostra)
+\item Quais são os tipos de features? Quais são categóricas e quais são numéricas? 
+\item Como são esses dados? (em numéricas podemos examinar range de valores, ou frequência de diferentes classes em categóricas por exemplo)
+\item Temos valores faltantes? 
+\end{enumerate}
+Se o dataset for pequeno o bastante podemos examinar individualmente cada feature. Já quando o dataset tem centenas de features devemos explorar técnicas de redução de dimensionalidade, que condensam informação em um número menor de features derivadas ou métodos de feature selection que podem auxiliar a encontrar features importantes dentre muitas candidatas. [Vale observar, talvez mencionar a possibilidade de aprofundamento no próximo ano]
+
+"Tempo dedicado analisando critica e detalhadamente se um dataset cumpre seu proósito é um tempo bem gasto." (\cite{DATAPYTHON})
+
+\subsubsection{Titanic}
+No projeto Titanic, portanto, iniciamos o Profilling do nosso arquivo principal (train.csv, na variável "df") orientados pela lista de perguntas que construímos.
+
+Como podemos observar na figura \ref{df.info}, temos 12 colunas e 891 linhas. Também logo observamos que as colunas Age, Cabin e Embarked tem dados faltantes. As outras 9 features estão totalmente preenchidas. 
+Observamos por meio do Dtype que as colunas Name, Sex, Ticket, Cabin e Embarked são variáveis categóricas, enquanto as outras são numéricas. Podemos confirmar tal fato observando a figura \ref{df.csv} onde podemos ver as primeiras e últimas entradas.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/df.info().png}
+\caption{\label{df.info}Informação sobre a tabela df.}
+\end{figure}
+
+Logo em seguida observamos a tabela e estudamos a documentação do dataset para compreender cada uma das 12 colunas e analisamos suas principais métricas (média, desvio padrão, quartis) na figura \ref{df.describe}:
+
+\begin{itemize}
+\item \textbf{PassengerId}: o número que representa cada passageiro. 
+\item \textbf{Survived}: 0 ou 1, para representar se determinado passageiro sobreviveu.
+\item \textbf{Pclass}: classe do ticket do passageiro. Equivalente a classe economica 1-alta;2-media;3-baixa
+\item \textbf{Name}: nome do passageiro com sobrenome e pronome de tratamento. 
+\item \textbf{Sex}: masculino ou feminino. 
+\item \textbf{Age}: idade em anos, em bebês abaixo de 1 ano é uma fração estimada. 
+\item \textbf{SibSp}: # irmãos e cônjuges a bordo.
+\item \textbf{Parch}: # paretens e filhos a bordo. 
+\item \textbf{Ticket}: número do ticket
+\item \textbf{Fare}: Tarifa paga pelo passageiro. 
+\item \textbf{Cabin}: Número da cabine. 
+\item \textbf{Embarked}: Porto de embarque. C = Cherbourg, Q = Queenstown, S = Southampton
+\end{itemize}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/df.describe().png}
+\caption{\label{df.describe}Estatística descritiva do df.}
+\end{figure}
+
+A partir dessas observações podemos desenvolver as seguintes suposições:
+\begin{itemize}
+\item PassengerID pode ser desconsiderada, uma vez que é apenas um artefato computacional para denominar as colunas.
+\item Name a princípio também será desconsiderado, uma vez que é pouco provável que tenha uma relação direta com a sobrevivência portanto a complexidade de quantificá-la não parece valer. [poderíamos extrair features derivadas dessa como a contagem de títulos, ou algo assim.]
+\item Sex pode ser convertida em 0 e 1. 
+\item Age tem faltas consideráveis, poderíamos excuí-la, porem faria sentido a idade ter alguma relação com a sobrevivência, nesse caso iremos lidar com os valores faltantes. Também podemos criar uma Feature com intervalos de idade. 
+\item SibSp e Parch podem ser combinados em uma terceira feature que combina os familiáres à bordo, seria interessante saber se deveríamos somar ou multiplicar esses números. 
+\item Ticket também pode ser, a princípio, desconsiderado, uma vez que não temos na documentação a explicação de seu código alfa numérico, e assim como Name, essa featere não parece ter direta relação com a sobrevivência. 
+\item  Fare, parece bem promissora. 
+\item Cabin, assim como ticket, não temos uma tradução numérica, poderíamos construir uma Feature como a contagem de cabines, entretanto temos muitos valores faltantes, portanto, é provável que desconsidera-la seja a melhor opção. 
+\item Embarked, pode ter alguma relação coma sobrevivência, provavelmente a trataremos. 
+\end{itemize}
+
+Podemos utilizar a pivotagem pra nos indicar a importância relativa de nossas features numéricas como mostram a figuras \ref{df.groupby} e \ref{embarked.groupby}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/df.groupby.png}
+\caption{\label{df.groupby}Agrupando cada coluna em média de acordo com a sobrevivência.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/embarked.png}
+\caption{\label{embarked.groupby}Agrupando a sobrevivência de acordo com os portos de embarque.}
+\end{figure}
+
+A partir dela podemos constatar que a média de classe, sexo e custo da passagem foi bem diferente entre os que sobreviveram e os que não sobreviveram, o que sugere serem variáveis importantes. O número de irmãos e cônjuges, bem como o número de pais e filhos apresentaram uma diferença mais sutil, assim como a idade. Pode ser entretanto que haja alguma relação de grupos dessas features com a sobrevivência, conforme observamos na figura \ref{age.hist} ao compararmos os histogramas das idades dos sobreviventes com o histograma das idades das vitimas. 
+Também podemos observar nas figuras \ref{family.groupby} e \ref{df.groupby.plot} a existência de algum padrão de sobrevivência de acordo com a quantidade de parentes a bordo. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/age.hist.png}
+\caption{\label{age.hist}Histograma das idades dos sobreviventes e das vítimas.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/family_groupby.png}
+\caption{\label{family.groupby}Índice de sobrevivência para cada quantidade de parentes a bordo.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/family_survivor_plot.png}
+\caption{\label{df.groupby.plot}Gráfico do índice de sobrevivência para cada quantidade de parentes a bordo.}
+\end{figure}
+
+Assim, concluímos o seguinte:
+\begin{itemize}
+\item Removeremos as colunas: \textit{PassengerId, Name, Ticket} e \textit{Cabin}. 
+\item Pclass já pode ser utilizada conforme se encontra.
+\item Modificaremos a feature Sex codificando os valores male e female para 0 e 1 respectivamente. 
+\item Completaremos os valores faltantes da Age considerando a mediana da o sexo e a classe do passageiro do passageiro. 
+\item Criaremos a feature Family combinando Parch e SibSp e a codificaremos numericamente. 
+\item Fare, assim como Pclass já está pronta para ser utilizada. 
+\item Codificaremos os portos em Embarked.
+\end{itemize}
+
+Finalmente, uma vez que estabelecemos um plano, podemos aplicá-lo ao nosso dataframe. Um ponto muito importante é que devemos estruturar as transformações de modo que possam ser aplicadas tanto nos dados de treino quanto nos dados que o modelo receberá em produção. Desse modo, obtemos nosso dataset tratado, conforme temos na figura \ref{wranglin.results}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/wrangle_results.png}
+\caption{\label{wranglin.results}Aplicação da função para preprocessar os dados.}
+\end{figure}
+
+\subsection{Machine Learning}
+\subsubsection{Conceitos Principais}
+No modelo \cite{BATON}, após o macroprocesso de \textit{Preparation} temos o macroprocesso \textit{Analysis}. Dessa forma, essa etapa que chamamos de \textit{Machine Learning} é equivalente aos seguintes processos da pipeline:
+\begin{itemize}
+\item \textbf{Modeling}: aplicar técnicas computacionais e estatísticas para derivar informação que oriente possíveis ações a partir dos dados. 
+\item \textbf{Verification}: é o processo avaliativo para confirmar a robustez dos resultados do código e dos modelos. É interessante notar que tem crescido a importância também de considerar a transparência e imparcialidade (fairness) dos processos de dados. 
+\item \textbf{Interpretation}: processo de compreensão dos resultados, da exploração e do modelo no que diz respeito as suas aplicações no mundo real.
+\end{itemize}
+
+As principais ferramentas desse etapa no ecossistema Python são:
+\begin{itemize}
+\item Bibliotecas Pandas e NumPy utilizadas, assim como na etapa anterior, para manipulação de tabelas e operações com colunas.
+\item Scikit Learn: é a principal biblioteca para aprendizado de máquina em Python. Podemos utiliza-la para facilmente criar modelos dentro dos diversos tipos oferecidos. Ela também oferece ferramentas para suportar todo o processo de treiná-los, avalia-los, ajustá-los e utilizá-los. Além ser open source e de oferecer diversas outras funcionalidades como a criação de pipelines de processamento automatizado. [citar a própria página oficial do projeto] 
+\end{itemize}
+
+Nesse contexto, quando falamos de \textit{Machine Learning} (ML), nos referimos a modelos preditivos que "aprendem" a partir de dados. Normalmente, os modelos encontram as relações e correlações entre colunas de uma tabela. Nesse sentido, podemos definir um modelo como a especificação de uma relação matemática ou probabilística entre variáveis,  \cite{SCRATCH} \cite{PRINCIPLES}.
+
+\cite{PRINCIPLES} Ressalta as seguintes premissas universais a todos os modelos de ML:
+\begin{itemize}
+\item Os dados de entrada devem ser limpos e pré processados. Poucos modelos toleram dados sujos, com valores faltantes ou variáveis categóricas. Nesse sentido, parte importante da preparação dos dados envolve lidar com essas questões.
+\item Em geral, são muito sensíveis a dados ruidosos. 
+\item Cada linha da tabela representa uma única observação do ambiente que tentamos modelar. 
+\item  Deve existir alguma relação entre variáveis.
+\item Modelos são geralmente considerados semi-automáticos, isto é, necessitam que humanos tomem decisões. Seu output é normalmente uma sequência de números. Um ser humano é necessário para analisar esses resultados com a perspectivas adequadas e comunica-los.
+\end{itemize}
+
+Nesse sentido, \cite{SCRATCH} elenca os seguintes conceitos fundamentais à modelagem de dados:
+\begin{itemize}
+\item Overfitting e Underfitting: é a medida do quanto o modelo é capaz de aprender e generalizar determinado conjunto de dados. Overfitting ocorre quando o modelo "decora" os dados de treino, portanto ele tem um excelente rendimento com dados conhecidos e péssimo com dados novos. Underfitting quando ele não aprende o suficiente.
+\item Bias-Variance trade off: analoga ao over e underfitting, um modelo com Bias alta performa mal até mesmo nos dados de treino (underfitting), enquanto uma variança alta significa que dados diferentes levariam a modelos muito diferentes, o que corresponde ao overfitting.
+\item Correctness: Existem diversas métricas para se avaliar um modelo. Normalmente se utiliza Acurácia,  Precision and Recall, muitas vezes a sua média harmônica denominada F1-score. 
+\item Feature selection, extraction e engineering: um dos conceitos mais importantes de um modelo são as suas features, a seguir detalhamos seus principais conceitos e técnicas.
+\end{itemize}
+
+\subsubsection{Feature Engineering}
+O objetivo do Feature Engineering é aumentar a performance preditiva do modelo, diminuir a necessidade computacional e de dados, e finalmente melhorar a interpretabilidade dos resultados. (KAGGLE\_FEATURE) Nessa sessão abordamos os principais fundamentos, e a práticas na preparação das features de um modelo. 
+
+Nesse sentido, \cite{SCRATCH} ressalta os seguintes pontos centrais:
+\begin{itemize}
+\item Features são quaisquer inputs do nosso modelo. 
+\item Quando nossos dados têm poucas features o modelo tende ao underfit. Do mesmo modo que o excesso de features faz com o que o modelo overfite. 
+\item Existem três tipos principais: booleano (0 ou 1), numérico e categórico (uma escolha dentro um conjunto discreto de opções).
+\item O tipo das features pode restringir o tipo de modelo que pode ser usado. Como por exemplo os modelos de regressão requererem dados numéricos, enquanto árvores de decisão conseguem lidar tanto com dados numéricos quanto categóricos.
+\end{itemize}
+
+Dentre as práticas mais importantes nesse processo de construção das features de um modelo podemos citar:
+\begin{itemize}
+\item Compreender as features, estudar o dataset e sua documentação, pesquisar o problema a ser solucionado tanto com profissionais da área quanto por meio de livros e artigos. Relações numéricas entre features são normalmente expressas por fórmulas matemáticas. Frequentemente as descobrimos quando pesquisamos a área do problema.
+\item Estudar outras soluções para problemas similares, ou anteriores.
+\item Usar a visualização de dados. A visualização muitas vezes pode revelar patologias em uma distribuição, ou inspirar possíveis simplificações para relações complicadas, ou ainda sugerir algum tipo de transformação como por exemplo aplicar uma função logarítmica. 
+\item Podemos utilizar uma função para medir a relação de determinada feature com a variável alvo e desse modo rankea-las para facilitar a busca das  features mais interessantes. Mutual Information é um exemplo de métrica utilizada nesse sentido, semelhante a correlação estatística, ela tem a vantagem de conseguir medir qualquer relação, não apenas linear entre variáveis. 
+\item A utilidade de uma feature, entretanto, é diretamente proporcional a capacidade do modelo aprender a relação dela com a variável alvo. Desse modo, mesmo features com alto índice de relação com a variável alvo, podem precisar serem transformadas para expor ao modelo a sua associação a variável alvo. Quanto mais complexa a combinação, mais difícil para o modelo aprender a relação.
+\end{itemize}
+
+Além das práticas podemos citar as seguintes principais técnicas para abordar esse processo:
+\begin{itemize}
+\item Aplicação de uma potência, raiz, ou transformar valores absolutos em percentual ou proporções
+\item Normalização. Isto é, deslocar a distribuição dos dados de modo que sua média seja zero e escalar seus valores de modo que seu desvio padrão seja unitário. 
+\item Criação de uma feature de contagem. Podemos agregar o número de fatores de risco, o número de ingredientes, etc.
+\item Frequentemente temos features complexas que podem ser separadas em features menores, como números de telefone (operadora e número), endereço (rua, cidade, país). Da forma semelhante podemos ter features que poderiam ser combinadas como modelo e marca de carro, ou tipo e nível de um seguro.
+\item Group Transforms. Podemos usar groupby para criar features como "média salarial no estado daquela pessoa", ou "Proporção de filmes lançados em determinado dia da semana, por gênero", ou "frequencia que o estado aparece no dataset"
+\end{itemize}
+
+\subsubsection{Principais modelos}
+Apesar de existirem muitas classificações, modelos são geralmente divididos entre (\cite{SCRATCH,PRINCIPLES}):
+\begin{itemize}
+\item Supervisionados: são treinados com dados classificados, para fazer predições sobre novos dados não-classificados. 
+\item Não-supervisionados: não consideram nenhuma classificação, e sim busca agrupar os dados. 
+\end{itemize}
+
+É importante considerar as características de cada tipo de modelo ao criar features para eles (KAGGLE\_Features)TODO.
+\begin{itemize}
+\item Modelos lineares naturalmente aprendem somas e diferenças, mas não conseguem aprender nada mais complexo.
+\item Razões são normalmente difíceis para a maioria dos modelos, logo criar features com combinações de razões frequentemente levam a ganhos de performance.
+\item Modelos lineares e redes neurais geralmente funcionam melhor com features normalizadas. Modelos de árvores normalmente não apresentam tanto ganho de performance ao escalar os valores das features para valores próximos de zero (normalizar).
+\item Modelos de árvores podem aprender quase qualquer combinação de features, mas quando uma combinação é particularmente importante, pode ser benéfico criar uma feature explicita, especialmente quando temos dados limitados.
+\item Contagem são especialmente úteis para modelos do tipo árvore. Isso porque esses modelos não tem uma forma natural de agregar informação entre muitas features de uma vez.
+\end{itemize}
+
+Nesse projeto buscamos utilizar os modelos mais representativos que se adequassem ao problema apresentado. Gostaríamos de nos aprofundar nos mecanismos de cada um deles em pesquisas futuras. Utilizamos os seguintes modelos:
+\begin{itemize}
+\item Logistic Regression
+\item Deciosion Tree Classifier
+\item Random Forest Classifier
+\item KNN
+\item Suppor Vector Classifier
+\end{itemize}
+
+
+\subsubsection{Titanic}
+A partir do que foi visto na teoria, construímos uma estrutura para criar os cinco modelos estudados, automaticamente treiná-los e avaliá los com os dados preprocessados. Desse modo, encontramos os seguintes resultados na Fig \ref{ml.results}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/results_1.png}
+\caption{\label{ml.results}Score dos diferentes modelos de Machine Learning.}
+\end{figure}
+
+As podemos observar que modelos do tipo árvore foram os que melhor performaram, logo seguidos da regressão logística, e finalmente os modelos não-supervisionados apresentaram o pior desempenho.
+
+Após essa observação, aplicamos a técnica de normalização que vimos em Feature Engineering em nossas features Age e Fare confome a Fig \ref{normalized}. O resultado experimental confirma o que estudamos: modelos baseados em árvore e regressão logística são menos sensíveis à normalização. Constatamos na figura \ref{ml.results2} que de fato, sua pontuação não foi alterada enquanto os modelos não supervisionados apresentaram uma melhora considerável de desempenho. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/normalized.png}
+\caption{\label{normalized}Comparação da performance após a normalização de Age e Fare.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Figures/results1_2.png}
+\caption{\label{ml.results2}Comparação da performance após a normalização de Age e Fare.}
+\end{figure}
+Assim, concluímos que modelos de arvore funcionaram melhor, especialmente o Random Forest. Também observamos que os tripulantes mais abastados, mulheres, crianças e idosos tiveram mais chance de sobreviver.
+
+\subsection{Data Visualization}
+O artigo \cite{BATON} busca definir a ciência de dados e um modelo de trabalho justamente tendo em vista localizar o papel da visualização de dados dentro desse campo. 
+
+Nesse ano de trabalho, a visualização de dados foi usada em diversos momentos das duas etapas anteriores (Análise de Dados e Machine Learning), além da apresentação dos resultados. Tanto os gráficos que utilizamos, quanto as tabelas, e até todas as ferramentas como o próprio conceito de notebook de código estão intimamente entrelaçados com conceitos de apresentação visual de informação, comunicação, arte e fundamentalmente design. 
+
+Assim, um seguimento muito importante desse nosso primeiro ano envolve nos aprofundarmos e mapearmos essa área tão rica e diversa. 
+
+\subsection{Deployment}
+Assim como a Visualização de Dados, é uma área com um corpo extenso a ela relacionado. Nesse caso, iniciamos os estudos dessa etapa, porém ainda estamos na fase preliminar dos mesmos. Identificamos que são necessários muitos conceitos de redes, aplicações web, serviços web, servidor, hospedagem, além de técnicas para armazenar modelos e funções, dentro outras. 
+
+\section{Conclusão}
+Assim, podemos afirmar que nosso objetivo principal foi concluído. Uma vez que foi possível sim percorrer um vasto terreno, compilar diversas técnicas e conceitos, bem como compreender a sua estrutura, e como muitas dessas partes dialogam entre si. Entretanto, alguns aspectos consideráveis da área foram omitidos em função do tempo disponível, como por exemplo a área de visualização de dados, o deployment de modelos de dados e aprofundamentos em Machine Learning.
+
+Assim, concluímos citando Tukey \cite{FoDA} em tradução livre:
+\begin{quote}
+O futuro da [ciência de dados] pode envolver grande progresso, superar dificuldades reais, e prestar um grande serviço para todos os campos de ciência e tecnologia. Isso vai acontecer? Depende de nós, de nossa vontade de percorrer o caminho difícil dos problemas reais ao invés do caminho suave das premissas irreais, critérios arbitrários e resultados abstratos sem impacto no mundo real. Quem aceita o desafio?
+\end{quote}
+
+\section{Perspectiva de continuidade}
+Os próximos passos dessa pesquisa envolvem nos aprofundarmos nas áreas de Data Visualization, Deployment e Machine Learning.
+
+\section{Participação em congressos e trabalhos publicados ou submetidos e outras
+atividades acadêmicas e de pesquisa}
+
+Além do trabalho diretamente relacionado a pesquisa, outros dois projetos foram desenvolvidos pelo bolsista a partir do que foi aprendido nesse processo:
+\begin{enumerate}
+    \item Livro de apresentação a linguagem Julia, desenvolvido para a disciplina "Paradigmas de Linguagem de programação" do curso de Ciência da Computação da UENF, onde os conceitos de linguagem, ferramentas e cenário da ciência de dados foram particularmente úteis, uma vez que a linguagem Julia foi fundamentalmente desenvolvida pensando nas necessidade de cientistas de dados.
+    \item Projeto desenvolvido em parceria com outro bolsista, também aluno do curso de computação, no qual cada um desenvolveu um sistema para extrair dados dos extratos escolares dos alunos de computação para automatizar o cálculo da demanda das matérias. Nesse projeto, consegui aplicar o aprendizado sobre desenvolvimento de projetos de dados, definição de pergunta de dados, obtenção de dados por meio meio da leitura de PDFs. Nele também aprendemos sobre expressões regulares, outra ferramenta primordial no processamento de dados.
+\end{enumerate}
+
+Também participei de CONFICT com uma apresentação em vídeo explicando o projeto. 
+
+\section{Data e assinatura do bolsista (assinatura digitalizada)}
+
+24/1/2022
+Daniel Brito
+
+\section{Data e assinatura do orientador (assinatura digitalizada)}
+
+28/1/2022
+Profa. Annabell D.R. Tamariz
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+\end{document}
