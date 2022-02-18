@@ -1,2 +1,2 @@
 # ds_fundamentals_research
-Undergrad research of data science basic concepts, tools and scope.
+Undergrad research on data science basic concepts, tools and scope.
