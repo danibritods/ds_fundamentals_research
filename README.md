@@ -1,5 +1,5 @@
 # ds_fundamentals_research
-My undergrad research at [PIBIC nota 10][pibic10] program 
+My undergrad research at [UENF][UENF]'s [PIBIC nota 10][pibic10] program 
 
 I co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
 
@@ -11,7 +11,7 @@ I co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], t
 
 - [Currently][third_workplan] I'm researching active inference, a promising area for understanding cognition and possibly building better tools to expand ours.
 
-
+[UENF]: uenf.br
 [pibic10]: https://uenf.br/portal/editais/edital-pibi-03-2021-pibic-nota-10/
 [annabell]: http://lattes.cnpq.br/7484786835288826
 [project_driven_ds]: 2021/PIBIC10_projeto_pesquisa.pdf
