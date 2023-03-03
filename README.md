@@ -1,7 +1,7 @@
 # ds_fundamentals_research
 My undergrad research at [PIBIC nota 10][pibic10] program 
 
-I co-designed the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
+I co-designed with my advisor Dr. Annabell Del Real Tamariz the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
 
 <!-- My undergrad research on data science basic concepts, tools and scope. -->
 
@@ -13,7 +13,7 @@ I co-designed the [Project Driven Data Science][project_driven_ds] research proj
 
 
 [pibic10]: https://uenf.br/portal/editais/edital-pibi-03-2021-pibic-nota-10/
-[project_driven_ds]: 
+[project_driven_ds]: 2021/PIBIC10_projeto_pesquisa.pdf
 [first_workplan]: 2021/PIBIC10_plano_trabalho_2021.pdf
 [first_report]: 2021/PIBIC10_relatorio_2021.pdf
 [second_workplan]: 2022/PIBIC10_plano_trabalho_2022.pdf
