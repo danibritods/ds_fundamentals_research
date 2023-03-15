@@ -25,7 +25,6 @@ I co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], t
 [k_titanic]: https://www.kaggle.com/code/danielbritodossantos/dbs97-titanic
 [k_intro_ml]: https://www.kaggle.com/learn/certification/danielbritodossantos/intro-to-machine-learning
 [k_inter_ml]: https://www.kaggle.com/learn/certification/danielbritodossantos/intermediate-machine-learning
-[k_feat_eng]: 
 [second_workplan]: 2022/PIBIC10_plano_trabalho_2022.pdf
 [second_report]: 2022/PIBIC10_relatorio_2022.pdf
 [academ]: https://github.com/dbs-97/demanda_academica
