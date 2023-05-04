@@ -14,7 +14,7 @@ I co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], t
 
 - [Currently][third_workplan] I'm researching active inference, a promising area for understanding cognition and possibly building better tools to expand ours.
 
-[UENF]: uenf.br
+[UENF]: https://uenf.br
 [pibic10]: https://uenf.br/portal/editais/edital-pibi-03-2021-pibic-nota-10/
 [annabell]: http://lattes.cnpq.br/7484786835288826
 [project_driven_ds]: 2021/PIBIC10_projeto_pesquisa.pdf
