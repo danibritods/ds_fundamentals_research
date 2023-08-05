@@ -1,7 +1,7 @@
 # ds_fundamentals_research
 My undergrad research at [UENF][UENF]'s [PIBIC nota 10][pibic10] program 
 
-I co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
+I've conceived and co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
 
 - In the [first year][first_workplan] of my research I [reviewed][first_report] data science as a field, including its history, methods, tools, and concepts. 
   - An exact definition is ongoing debate, but we can pragmatically define Data Science as the interdisciplinary field responsible for applying and expanding the tools and methods used to gain insight from data. 
