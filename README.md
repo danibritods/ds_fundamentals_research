@@ -1,18 +1,18 @@
 # ds_fundamentals_research
 My undergrad research at [UENF][UENF]'s [PIBIC nota 10][pibic10] program 
 
-I've conceived and co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], the [Project Driven Data Science][project_driven_ds] research project to encompass my own and other research in Data Science at UENF.
+I've conceived and co-designed with my advisor [Prof. Dr. Annabell Del Real Tamariz][annabell], the [Project Driven Data Science][project_driven_ds] research project to encompass my own and potential other colleagues' research in Data Science at UENF. Indeed, my colleague 
 
 - In the [first year][first_workplan] of my research I [reviewed][first_report] data science as a field, including its history, methods, tools, and concepts. 
-  - An exact definition is ongoing debate, but we can pragmatically define Data Science as the interdisciplinary field responsible for applying and expanding the tools and methods used to gain insight from data. 
-  - I've found the amazing [Data Science Work-Model][dswm] to orient the practice. 
+  - An exact definition is an ongoing debate. Still, we can pragmatically define Data Science as the interdisciplinary field responsible for applying and expanding the tools and methods used to gain insight from data. 
+  - I've found the fantastic [Data Science Work-Model][dswm] to orient the practice. 
   - And [Greater Data Science][gds] to systematize the broad field of data science.
-  - I've also took Kaggle's courses: [intro][k_intro_ml] and [intermediate][k_inter_ml] machine learning.
+  - I've also taken Kaggle's courses: [intro][k_intro_ml] and [intermediate][k_inter_ml] machine learning.
   - and did the elusive [ML hello world][k_titanic].
 
 - In the [second year][second_workplan] I [developed][second_report] "[AcaDem][academ]", a data extraction and analysis script to generate information about the students of the university, specially to help course coordinators make informed decisions about subject offerings and resource allocation. I've also organized and taught an [introductory summer course][introds] on data science, helping students gain the skills and knowledge needed to start in this field.
 
-- [Currently][third_workplan] I'm researching active inference, a promising area for understanding cognition and possibly building better tools to expand ours.
+- [Currently][third_workplan] I'm researching active inference, a promising area for understanding cognition and building better tools to expand ours.
 
 [UENF]: https://uenf.br
 [pibic10]: https://uenf.br/portal/editais/edital-pibi-03-2021-pibic-nota-10/
